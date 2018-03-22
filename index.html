@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/script.js"></script>
+    <title>Регистрация</title>
+</head>
+
+<body>
+
+    <!--ФОРМА ВХОДА-->
+
+    <div class="login" style="display:none">
+        <form action="POST" class="">
+            <div class="login__login-card">
+                <div class="input-field center card-panel" id="input-field">
+
+                    <img src="img/login_avatar.png" alt="">
+
+                    <p>Логин:</p>
+                    <input placeholder="Введите логин" id="login_field" type="text" class="validate">
+
+                    <p>Пароль:</p>
+                    <input placeholder="Введите пароль" value="" id="password_field" type="password" class="validate">
+                    <p id="is-capslock">Включен CapsLock</p>
+                    <p id="fill-error"></p>
+
+                    <div class="login-btn">
+                        <input type="button" name="loginButton" value="Вход" class="btn">
+                    </div>
+
+                    <p class="to_recovery center">
+                        <a href="recovery">Забыли пароль?</a>
+                    </p>
+
+                    <p class="to_registration center">
+                        <a href="reg">Регистрация</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <!---ФОРМА РЕГИСТРАЦИИ-->
+
+    <div class="reg" style="display:none">
+        <form action="POST" class="col s12">
+            <div class="row">
+                <div class="input-field reg__reg-card center card-panel" id="input-field">
+
+                    <p>Логин:*</p>
+                    <input placeholder="Введите логин" value="" id="reg__login" type="text" class="validate">
+                    <p class="reg__err_login"></p>
+
+                    <p>Пароль:*</p>
+                    <input placeholder="Введите пароль" value="" id="reg__pass" type="password" class="validate">
+                    <p class="reg__err_pass"></p>
+
+                    <p>Повторите пароль:*</p>
+                    <input placeholder="Введите пароль еще раз" value="" id="reg__valid_pass" type="password" class="validate">
+                    <p class="reg__err_valid_pass"></p>
+
+                    <p>E-mail:*</p>
+                    <input placeholder="Введите e-mail" value="" id="reg__email" type="text" class="validate">
+                    <p class="reg__err_email"></p>
+
+                    <p>Имя:</p>
+                    <input placeholder="Введите имя" value="" id="reg__name" type="text" class="validate">
+
+                    <p>Фамилия:</p>
+                    <input placeholder="Введите Фамилию" value="" id="reg__surname" type="text" class="validate">
+
+                    <p>Капча:*</p>
+                    <input placeholder="" value="" id="reg__captcha" type="text" class="validate">
+                    <p class="reg__err_captcha"></p>
+
+                    <div class="reg__btn">
+                        <a class="btn">Зарегистрироватся</a>
+                    </div>
+
+                    <p class="to_login center">
+                        <a href="login">Вход</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <!---ФОРМА ВОССТАНОВЛЕНИЯ ПАРОЛЯ-->
+
+    <div class="row recovery" style="display:none">
+        <form action="POST" class="col s12">
+            <div class="row">
+                <div class="input-field recovery__recovery-card center card-panel" id="input-field">
+
+                    <p>E-mail:*</p>
+                    <input placeholder="Введите E-mail" value="" id="recovery__email" type="text" class="validate">
+                    <p class="recovery__err_email"></p>
+
+                    <div class="recovery__btn">
+                        <a class="btn">Сбросить пароль</a>
+                    </div>
+
+                    <p class="to_login center">
+                        <a href="login">Вход</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <!--ОСНОВНАЯ СТРАНИЦА-->
+
+    <div id="main-page" style="display:none">
+
+
+        <!--НАВИГАЦИЯ-->
+        <nav>
+            <div class="nav-wrapper">
+                <div class="row">
+                    <div class="nav__navigation left">
+                        <ul id="nav-mobile" class="hide-on-med-and-down">
+                            <li>
+                                <img src="img/logo.png" alt="Logo" class="logo">
+                            </li>
+                            <li>
+                                <a href="profile">Home</a>
+                            </li>
+                            <li>
+                                <a href="edit-profile">My Profile</a>
+                            </li>
+                            <li>
+                                <a href="Messages">Messages</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav__search col s4 right">
+                        <div class="input-field ">
+                            <div class="row">
+                                <input type="text" name="searh" class="col s6" id="nav__search-field" placeholder="Search...">
+                                <button class="btn nav__search-btn center" type="submit" name="">
+                                    <i class="material-icons">search</i>
+                                </button>
+                                <button class="btn center" type="submit" name="logout">Выход</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+
+        <!--ОСНОВНАЯ СТРАНИЦА (ПРОФИЛЬ, ПОСТЫ, СПИСОК ДРУЗЕЙ)-->
+        <main id="main" class="profile">
+            <div class="container">
+                <div class="row">
+                    <div class="col s3">
+
+                        <!--БЛОК С ДАНЫМИ ПОЛЬЗОВАТЕЛЯ (АВАТАР, ДРУЗЬЯ, ВРАГИ)-->
+                        <div class="user">
+                            <div class="teal lighten-5 card">
+                                <img class="user__back-img" src="img/iceland.jpg">
+                                <div class="user__contain-profile-img">
+                                    <img class="user__profile-img" src="img/no-image-user.jpg">
+                                </div>
+                                <p>
+                                    <b class="user__profile-name">Firstname Lastname</b>
+                                </p>
+                                <p class="user__progile-quote center"></p>
+                                <div class="user__friends-and-enemies row">
+                                    <div class="user__friends col s6">
+                                        <p>Friends</p>
+                                        <p class="user__friend_count">0</p>
+                                    </div>
+                                    <div class="user__enemies col s6">
+                                        <p>Enemies</p>
+                                        <p class="user__enemies_count">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--БЛОК С ДАНЫМИ ПОЛЬЗОВАТЕЛЯ (WENT TO, LIVES IN, FROM)-->
+                        <div class="user-about">
+                            <div class="teal lighten-5 card">
+                                <div class="card-content">
+                                    <span>
+                                        <b>About · </b>
+                                    </span>
+                                    <a href="edit-profile">Edit</a>
+                                    <ul class="user-about__content">
+                                        <li class="user-about__content__went-to">
+                                            <img src="img/went-to.png" alt=""> Went to
+                                            <a href="edit-profile">no set</a>
+                                        </li>
+                                        <li class="user-about__content__lives-in">
+                                            <img src="img/lives-in.png" alt=""> Lives in
+                                            <a href="edit-profile">no set</a>
+                                        </li>
+                                        <li class="user-about__content__from">
+                                            <img src="img/from.png" alt=""> From
+                                            <a href="edit-profile">no set</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--БЛОК С АЛЬБОМАМИ-->
+                        <div class="user__albums">
+                            <div class="teal lighten-5 card">
+                                <div class="user__albums_header">
+                                    <span>
+                                        <b>Albums · </b>
+                                    </span>
+                                    <a href="#">Show more</a>
+                                </div>
+                                <div class="card-content row">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--БЛОК ДОБАВЛЕНИЯ ПОСТОВ-->
+                    <div class="col s6">
+                        <div class="wall">
+                            <div class="teal lighten-5 card">
+                                <div class="card-content">
+                                    <div class="wall__wall-item">
+                                        <input type="text" name="" class="" id="massage" placeholder="Massage">
+                                        <button class="btn add-photo center" type="submit" name="">
+                                            <i class="material-icons">camera_alt</i>
+                                        </button>
+                                        <button class="btn add-massege center" type="submit" name="">
+                                            <i class="material-icons">chat_bubble</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--БЛОК ВЫВОДА ПОСТОВ И РЕЗУЛЬТАТОВ ПОИСКА-->
+                            <div class="teal lighten-5 card">
+                                <div class="wall__empty-item card-content">
+                                    <p class="center">This will be your wall</p>
+                                    <div class="row">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--БЛОК СО СПИСКОМ ДРУЗЕЙ-->
+                    <div class="col s3">
+                        <div class="friends-block">
+                            <div class="teal lighten-5 card">
+
+                                <div class="friends-block__header">
+                                    <span>
+                                        <b>Friends · </b>
+                                    </span>
+                                    <a href="#">View all</a>
+                                </div>
+
+                                <div class="card-content">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+
+        <!--СТРАНИЦА ПРОФИЛЯ-->
+        <div class="edit-profile" style="display:none">
+            <div class="edit-profile__profile-item">
+                <div class="row">
+                    <div class="col s6 offset-s3">
+                        <div class="edit-profile__contain-profile-img">
+                            <img class="edit-profile__profile-img" src="img/no-image-user.jpg">
+                        </div>
+                        <p class="edit-profile__profile-name">
+                            <b>Firstname Lastname</b>
+                        </p>
+                        <ul class="tabs tabs-fixed-width">
+                            <li class="tab col s6">
+                                <a class="active" href="#profile">Profile</a>
+                            </li>
+                            <li class="tab col s6">
+                                <a href="#albums">Albums</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!--БЛОК ИЗМЕНИЯ ПРОФИЛЯ-->
+            <div id="profile" class="col s12">
+                <div class="card-panel">
+                    <div class="profile__container">
+                        <div class="row">
+                            <div class="profile__firstname col s6">
+                                <p class="left">Firstname: </p>
+                                <input type="text" class="validate">
+                            </div>
+
+                            <div class="profile__lastname col s6">
+                                <p class="left">Lastname: </p>
+                                <input type="text" class="validate">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 profile__textarea">
+                                <p class="left">Quote</p>
+                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="profile__lived col s6">
+                                <p class="left">Lived: </p>
+                                <input type="text" class="validate">
+                            </div>
+
+                            <div class="profile__from col s6">
+                                <p class="left">From: </p>
+                                <input type="text" class="validate">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="profile__went col s12">
+                                <p class="left">Went: </p>
+                                <input type="text" class="validate">
+                            </div>
+                        </div>
+
+                        <div class="row profile__edit-photo-label">
+                            <div class="col s3">
+                                <p class="left">Profile photo: </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s9">
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>Выберите файл</span>
+                                        <input type="file">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s3 ">
+                                <input type="button" value="Update" class="btn left">
+                            </div>
+                        </div>
+
+                        <div class="row profile__remove-profile">
+                            <div class="col s3">
+                                <a href="#" class="left">Remove profile</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!--БЛОК С АЛЬБОМАМИ-->
+            <div id="albums" class="col s12">
+                <div class="card-panel">
+                    <div class="profile__container">
+                        <div class="row">
+                            <p>Добавить альбом: </p>
+                            <div class="albums__add-album">
+                                <div class="albums__add-album__input col s9 left">
+                                    <input type="text" placeholder="Введите название альбома..." class="validate">
+                                </div>
+                                <div class="albums__add-album__btn col s3">
+                                    <input type="button" value="Добавить" class="btn">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col s3 albums__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Title album</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s3 albums__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Title album</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s3 albums__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Title album</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s3 albums__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Title album</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s3 albums__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Title album</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s3 albums__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Title album</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s3 albums__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Title album</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s3 albums__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Title album</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--БЛОК ВНУТРЕННЕГО СОДЕРЖАНИЯ АЛЬБОМА-->
+            <div class="inside-album" class="col s12">
+                <div class="card-panel">
+
+                    <div class="row">
+                        <div class="col s3 offset-s3 inside-album__add-photo">
+                            <div class="file-field input-field">
+                                <div class="btn">
+                                    <span>add photo</span>
+                                    <input type="file" multiple>
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s3 inside-album__remove-album">
+                            <div class="file-field input-field">
+                                <input type="button" value="remove album" class="btn ">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="profile__container">
+                            <div class="row">
+                                <div class="album-title">
+                                    <p>
+                                        <b>Title album</b>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col s3 inside-album__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s3 inside-album__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s3 inside-album__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s3 inside-album__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s3 inside-album__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s3 inside-album__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s3 inside-album__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s3 inside-album__album-card">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="img/iceland.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--ФУТЕР-->
+
+    </div>
+    <footer class="page-footer" id="footer" style="display:none">
+        <div class="footer__copyright">
+            <p></p>
+        </div>
+    </footer>
+</body>
+
+</html>

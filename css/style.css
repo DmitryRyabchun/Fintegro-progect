@@ -1,0 +1,308 @@
+body {
+    background: #8c9eff;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.login__login-card {
+    margin: 100px auto;
+    width: 300px;
+}
+
+.login img {
+    width: 50%;
+}
+
+.login p {
+    margin-bottom: 0;
+}
+
+.login-btn input,
+reg__btn a,
+.recovery__btn a {
+    width: 100%;
+}
+
+#input-field {
+    width: 38px 0px;
+    padding: 25px;
+}
+
+.reg .reg__reg-card {
+    margin: 50px auto;
+    width: 350px;
+}
+
+.recovery .recovery__recovery-card {
+    width: 300px;
+    margin-top: 100px;
+}
+
+.to_registration,
+.to_login,
+.to_recovery {
+    text-decoration: underline;
+}
+
+#fill-error,
+#is-capslock {
+    margin: 0 0 15px 0;
+    color: red;
+}
+
+.reg__err_login,
+.reg__err_pass,
+.reg__err_valid_pass,
+.reg__err_email,
+.reg__err_captcha,
+.recovery__err_email {
+    margin-top: 0;
+    color: red;
+}
+
+#main-page {
+    flex: 1 0 auto;
+}
+
+.logo {
+    width: 100px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+#nav__search-field {
+    height: 30px;
+    margin: 17px 5px 0;
+    border-bottom: 1px solid rgb(29, 165, 151);
+    box-shadow: 0 1px 0 0 #26a69a;
+}
+
+.nav__search-btn i {
+    margin-top: -13px;
+}
+
+#footer {
+    padding-top: 0px;
+    color: #df696e;
+}
+
+.footer__copyright {
+    padding-left: 50px;
+    color: white;
+}
+
+.user {
+    margin-top: 27px;
+}
+
+.user__back-img {
+    width: 100%;
+}
+
+.user__profile-img {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    padding: 2px;
+    background: #fff;
+    margin: -60px auto 0;
+}
+
+.user__contain-profile-img {
+    margin: 0 auto;
+    width: 105px;
+}
+
+.user__profile-name {
+    display: block;
+    text-align: center;
+}
+
+.user__friends,
+.user__enemies {
+    text-align: center;
+}
+
+.user-about__content li img {
+    width: 1.5em;
+    vertical-align: middle;
+    margin-right: 10px
+}
+
+.wall__wall-item #massage {
+    width: 78%;
+    margin-right: 1%;
+}
+
+.wall__wall-item button {
+    padding: 1%;
+    width: 9%;
+}
+
+.wall__wall-item button i {
+    margin-top: -13px;
+}
+
+.edit-profile__profile-item {
+    background-image: url(../img/iceland.jpg);
+    position: relative;
+    width: 100%;
+    padding-bottom: 0.03rem;
+    margin-bottom: 0;
+    text-align: center;
+    background-size: cover;
+    border: 0;
+}
+
+.edit-profile__profile-item .row {
+    margin-bottom: 0;
+}
+
+.edit-profile__profile-img {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    margin: 100px auto 0px;
+}
+
+.edit-profile__profile-name {
+    color: white;
+    font-size: 25px;
+    margin-bottom: 70px;
+}
+
+.profile__container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#profile .card-panel {
+    margin: 0;
+}
+
+#profile p {
+    margin: 0 auto;
+}
+
+#profile .profile__edit-photo-label {
+    margin: 0;
+}
+
+#profile .profile__remove-profile a {
+    margin-top: 40px;
+}
+
+#albums .albums__add-album__input {
+    padding-left: 0;
+}
+
+.albums__album-card {
+    height: 250px;
+}
+
+.albums__album-card .card-title {
+    font-size: 20px;
+    margin: 0;
+}
+
+#albums .row {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#albums .card-panel {
+    margin: 0;
+}
+
+.album-title {
+    font-size: 30px;
+    text-align: center;
+}
+
+.inside-album .card-panel {
+    margin: 0;
+}
+
+.user__albums .row {
+    margin-bottom: 0px;
+}
+
+.user__albums .user__albums_album-block {
+    margin-top: 15px;
+}
+
+.user__albums .user__albums_album-block img {
+    padding: 2px;
+}
+
+.friends-block__friends-item img {
+    border-radius: 50%;
+}
+
+.friends-block__friends-item .row .col {
+    padding: 0px;
+}
+
+main .container {
+    width: 100%;
+}
+
+.friends-block__header {
+    padding: 20px 20px 0;
+}
+
+.friends-block__friends-item>.row {
+    padding: 0;
+    margin: 0; 
+    /* border-bottom: 1px solid #26a69a; */
+}
+
+.friends-block__friends-item img {
+    margin-right: 5px;
+}
+
+.friends-block__friends-item .unfollow {
+    margin: 15px 5px 5px 5px;
+}
+
+.friends-block__block {
+    margin: 15px 0 5px;
+}
+
+.friends-block__friends-item img {
+    height: 90px;
+    width: 90px;
+}
+
+.user__albums_header {
+    padding: 20px 20px 0;
+}
+
+.user__albums .card .card-content {
+    padding-top: 0;
+}
+
+.search-friends__item .user__back-img {
+    height: 190px;
+    object-fit: cover;
+    object-position: 0 0;
+}
+
+.wall__empty-item .search-friends__item .card p {
+    margin: 10px auto 20px;
+ }
+
+.wall__empty-item .search-friends__item .row {
+    margin: 0;
+    padding: 0 10px 20px;
+    text-align: center;
+}
+
+.search-friends__item .row input {
+    box-sizing: border-box;
+    width: 44%;
+    margin: 2%;
+    padding-left: 0px;
+    padding-right: 0px;
+}
